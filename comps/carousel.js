@@ -1,48 +1,38 @@
 const template = document.createElement("template");
 template.innerHTML = `
-    <style>
-      :host{
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+<style>
+    :host{
         /* the shadow root */
         background-color: #333; /* default */
         color: white;
         display: block; /* critical */
-      }
-      ::slotted(h2){
-        /* represents an h2 element that has been placed into a slot */
-        font-weight: 300;
-      }
-      .root{
+        height: 400px !important;
+    }
+    .root{
+        /*
         position: relative;
         padding: 2rem;
-      }
-      .character{
-        position: absolute;
-        z-index: 10;
-        top: -10rem;
-        left: 0;
-        font-size: 10rem;
-        line-height:1;
-        color: hsla(60, 50%, 80%, 0.32);
-      }
-      
-    </style>
-    <div class="root">
-    <slot name="content">Default text if not title slot used in HTML</slot>
-    <!--
-    <my-slide></my-slide>
-    <h1>Main</h1>
-    <slot name="title">Default text if not title slot used in HTML</slot>
-    <slot name="aaa" include-HTML="./incs/carousel.html"></slot>
-    <slot name="aaa"></slot>
-    <script type="module" src="./main.js"></script>
-    -->
-    </div>
+        */
+    }
+    .carousel-item {
+        height: 400px;
+    }
+</style>
+<!--    ==============  -->
+<!--    ==============  -->
+<!--    ==============  -->
+<div class="root">
+    <slot name="carousel">Default text if not title slot used in HTML</slot>
+</div>
 `;
 
 class Carousel extends HTMLElement {
   constructor() {
     super();
-    this.root = this.attachShadow({ mode: "closed" });
+    this.root = this.attachShadow({ mode: "open" });
     // shadowRoot shields the web component from external styling, mostly
     let clone = template.content.cloneNode(true);
     this.root.append(clone);
