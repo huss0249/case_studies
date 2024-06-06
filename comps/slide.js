@@ -28,6 +28,33 @@ template.innerHTML = `
     </style>
     <div class="root">
     <h1>SLIDE</h1>
+
+    <div class="carousel-item bg-info d-flex justify-content-center align-items-center">
+  <!--       <img src="..." class="d-block w-100" alt="..."> -->
+<div class="card">
+  <div class="card-body">
+    <div class="form-check">
+      <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+    <label class="form-check-label" for="flexRadioDefault1">
+      Default radio
+    </label>
+  </div>
+<div class="form-check">
+  <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+<label class="form-check-label" for="flexRadioDefault2">
+  Default checked radio
+</label>
+</div>
+</div>
+</div>
+
+<div class="carousel-caption">
+  <h5>Second slide label</h5>
+<p>Some representative placeholder content for the second slide.</p>
+</div>
+</div>
+
+
     <!--
     <slot name="title">Default text if not title slot used in HTML</slot>
     <slot name="aaa" include-HTML="./incs/carousel.html"></slot>
