@@ -27,9 +27,14 @@ template.innerHTML = `
       
     </style>
     <div class="root">
-      <h1>Main</h1>
-      <slot name="title">Default text if not title slot used in HTML</slot>
+    <!--
+    <h1>Main</h1>
+    <slot name="title">Default text if not title slot used in HTML</slot>
+    <slot name="aaa" include-HTML="./incs/carousel.html"></slot>
+    <slot name="aaa"></slot>
+    -->
     </div>
+    <script type="module" src="./main.js"></script>
 `;
 
 class Main extends HTMLElement {

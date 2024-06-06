@@ -1,27 +1,10 @@
-import '/comps/comp-header.js'
-import '/comps/comp-main.js'
-import '/comps/comp-footer.js'
+import "/comps/carousel.js";
 
-window.wcUID = 0;
-
-const $app = document.querySelector('#app')
-
-// $app.innerHTML = `
-// <big-head></big-head>
-// <big-main></big-main>
-// <big-foot class='bg-info' >copyright text</big-foot>`
-// $app.innerHTML = '<big-bang></big-bang>'
-
-let df = new DocumentFragment()
-let $head = document.createElement('big-head')
-let $main = document.createElement('big-main')
-let $foot = document.createElement('big-foot')
-
-$foot.classList.add('bg-info')
-$foot.textContent = 'Copyright Text'
-
-df.appendChild($head)
-df.appendChild($main)
-df.appendChild($foot)
-
-$app.appendChild(df)
+const $app = document.querySelector("#app");
+const $inc = document.createElement("div");
+// $inc.setAttribute("include-HTML", "./incs/carousel.html");
+// $app.appendChild($inc);
+$app.setAttribute("include-HTML", "./incs/carousel.html");
+// $app.appendChild($inc);
+// console.log($app);
+// $app.innerHTML = '<div id="app" include-HTML="./incs/carousel.html"></div>';
