@@ -18,3 +18,4 @@ $full.setAttribute("include-HTML", "./incs/carousel_full.html");
 // $app.appendChild($inc);
 // console.log($app);
 // $app.innerHTML = '<div id="app" include-HTML="./incs/carousel.html"></div>';
+

@@ -60,9 +60,8 @@ class Controls extends HTMLElement {
   static get observedAttributes() {
     return ["control", "color"];
   }
-  //
-  //sync attributes with properties as you want
 
+  //sync attributes with properties as you want
   get control() {
     return this.getAttribute("control");
   }
@@ -75,6 +74,54 @@ class Controls extends HTMLElement {
   }
   set color(value) {
     this.setAttribute("color", value);
+  }
+
+  /*
+  handle values and changes to the attributes
+  */
+  attributeChangedCallback(attrName, oldVal, newVal) {
+    if (attrName.toLowerCase() === "control") {
+      const btns = this.root.querySelectorAll("button");
+      btns.forEach((b) => {
+        b.setAttribute("data-bs-target", `#${newVal}`);
+      });
+      // let p = div.querySelector("p")
+      //   ? div.querySelector("p")
+      //   : document.createElement("p");
+      // p.className = "cat";
+      // p.textContent = newVal;
+      // //   div.append(p);
+      // div.prepend(p);
+    }
+    // console.log(attrName, newVal);
+    if (attrName.toLowerCase() === "color") {
+      this.style.backgroundColor = newVal;
+    }
+  }
+
+  connectedCallback() {
+    if (this.control) {
+      const btns = this.root.querySelectorAll("button");
+      btns.forEach((b) => {
+        b.setAttribute("data-bs-target", `#${this.control}`);
+      });
+    }
+    // window.wcUID++;
+    // // console.log(this.cat)
+    // if (this.cat === "acc") {
+    //   this.makeAccordions(`ex${this.cat}`);
+    // } else if (this.cat === "tab") {
+    //   this.makeTabs(`ex${this.cat}`);
+    // } else if (this.cat === "pill") {
+    //   this.makePillTabs(`ex${this.cat}`);
+    // } else if (this.cat === "horizontal") {
+    //   this.makeHorizontalTabs(`ex${this.cat}`);
+    // }
+    // this.wc_title();
+    // this.wc_content();
+    // this.makeAccordion()
+
+    // return;
   }
 
   //
