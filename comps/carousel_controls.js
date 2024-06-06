@@ -2,16 +2,13 @@ const template = document.createElement("template");
 template.innerHTML = `
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
 <style>
     :host{
         /* the shadow root */
         background-color: #333; /* default */
         color: white;
         display: block; /* critical */
-        /*
-        height: 400px !important;
-        */
+        /*height: 300px;*/
     }
     .root{
         /*
@@ -19,19 +16,38 @@ template.innerHTML = `
         padding: 2rem;
         */
     }
-    .carousel-item {
-        height: 400px;
-    }
 </style>
 <!--    ==============  -->
 <!--    ==============  -->
 <!--    ==============  -->
+<!--
+-->
 <div class="root">
-    <slot name="carousel">Default text if not title slot used in HTML</slot>
+
+    <button
+        class="carousel-control-prev"
+        type="button"
+        data-bs-target="#carouselID"
+        data-bs-slide="prev"
+    >
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+
+    <button
+        class="carousel-control-next"
+        type="button"
+        data-bs-target="#carouselID"
+        data-bs-slide="next"
+    >
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+
 </div>
 `;
 
-class Carousel extends HTMLElement {
+class Controls extends HTMLElement {
   constructor() {
     super();
     this.root = this.attachShadow({ mode: "open" });
@@ -41,17 +57,17 @@ class Carousel extends HTMLElement {
   }
 
   //define the allowed attributes
-  /*   static get observedAttributes() {
-    return ["character", "color"];
+  static get observedAttributes() {
+    return ["control", "color"];
   }
- */
   //
   //sync attributes with properties as you want
-  /* get character() {
-    return this.getAttribute("character");
+
+  get control() {
+    return this.getAttribute("control");
   }
-  set character(value) {
-    this.setAttribute("character", value);
+  set control(value) {
+    this.setAttribute("control", value);
   }
 
   get color() {
@@ -59,17 +75,18 @@ class Carousel extends HTMLElement {
   }
   set color(value) {
     this.setAttribute("color", value);
-  } */
+  }
+
   //
   //handle values and changes to the attributes
   /*
   attributeChangedCallback(attrName, oldVal, newVal) {
-    if (attrName.toLowerCase() === "character") {
+    if (attrName.toLowerCase() === "control") {
       const div = this.root.querySelector(".root");
       let p = div.querySelector("p")
         ? div.querySelector("p")
         : document.createElement("p");
-      p.className = "character";
+      p.className = "control";
       p.textContent = newVal;
       div.append(p);
     }
@@ -78,7 +95,7 @@ class Carousel extends HTMLElement {
       this.style.backgroundColor = newVal;
     }
   }
-    */
+  */
 }
 
-customElements.define("my-carousel", Carousel);
+customElements.define("my-controls", Controls);
