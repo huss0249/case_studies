@@ -1,3 +1,4 @@
+import "/comps/slide.js";
 import "/comps/carousel.js";
 
 const $app = document.querySelector("#app");

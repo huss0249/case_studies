@@ -27,10 +27,8 @@ template.innerHTML = `
       
     </style>
     <div class="root">
-    <slot name="content">Default text if not title slot used in HTML</slot>
+    <h1>SLIDE</h1>
     <!--
-    <my-slide></my-slide>
-    <h1>Main</h1>
     <slot name="title">Default text if not title slot used in HTML</slot>
     <slot name="aaa" include-HTML="./incs/carousel.html"></slot>
     <slot name="aaa"></slot>
@@ -39,7 +37,7 @@ template.innerHTML = `
     </div>
 `;
 
-class Carousel extends HTMLElement {
+class Slide extends HTMLElement {
   constructor() {
     super();
     this.root = this.attachShadow({ mode: "closed" });
@@ -49,13 +47,13 @@ class Carousel extends HTMLElement {
   }
 
   //define the allowed attributes
-  /*   static get observedAttributes() {
+  /* static get observedAttributes() {
     return ["character", "color"];
-  }
- */
+  } */
   //
   //sync attributes with properties as you want
-  /* get character() {
+  /*
+  get character() {
     return this.getAttribute("character");
   }
   set character(value) {
@@ -67,7 +65,8 @@ class Carousel extends HTMLElement {
   }
   set color(value) {
     this.setAttribute("color", value);
-  } */
+  }
+    */
   //
   //handle values and changes to the attributes
   /*
@@ -86,7 +85,7 @@ class Carousel extends HTMLElement {
       this.style.backgroundColor = newVal;
     }
   }
-    */
+  */
 }
 
-customElements.define("my-carousel", Carousel);
+customElements.define("my-slide", Slide);
