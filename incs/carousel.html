@@ -1,12 +1,14 @@
 <my-carousel id="carouselWC" class="carousel slide">
   <div slot="carousel">
     <div class="carousel-inner">
-      <my-slide class="carousel-item bg-success p-5 active"></my-slide>
-      <my-slide class="carousel-item bg-success p-5"></my-slide>
+      <my-slide class="carousel-item bg-success p-5 active">TEST slide 1</my-slide>
+      <my-slide class="carousel-item bg-success p-5">
+        <h1>Test slide 2</h1>
+      </my-slide>
       <my-slide class="carousel-item bg-success p-5"></my-slide>
     </div>
 
-    <button
+    <!-- <button
       class="carousel-control-prev"
       type="button"
       data-bs-target="#carouselWC"
@@ -23,7 +25,7 @@
     >
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
-    </button>
-    <!-- <my-controls></my-controls> -->
+    </button> -->
+    <my-controls></my-controls>
   </div>
 </my-carousel>

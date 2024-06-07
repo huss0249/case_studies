@@ -59,7 +59,8 @@ class Controls extends HTMLElement {
   }
 
   connectedCallback() {
-    const parentID = this.parentElement.parentElement.id;
+    // const parentID = this.parentElement.parentElement.id;
+    const parentID = this.parentElement.id;
     console.log("parentID ", parentID);
     // $carousel = document.querySelector(`#${parentID}`);
     console.log(document.querySelector(".carousel").id);
@@ -79,13 +80,21 @@ class Controls extends HTMLElement {
   }
 
   whoClicked(e) {
+    console.log(e.target.parentElement);
     let $clickedBtn = e.target.closest("button").getAttribute("data-bs-slide");
     console.log("$clickedBtn = ", $clickedBtn, " | ");
     // const $pp = e.target.parentElement.parentElement.parentElement;
 
-
-    const myTarget = document.querySelector(".carousel").id;
-    const $carousel = new bootstrap.Carousel(`#${myTarget}`);
+    let myTarget = document.querySelector(".carousel").id;
+    console.log(
+      "WHO CLICKED ",
+      myTarget,
+      " | ",
+      this.parentElement.offsetParent,
+      " | ",
+      this.offsetParent
+    );
+    let $carousel = new bootstrap.Carousel(`#${myTarget}`);
 
     // $clickedBtn === "next" ? carousel.next() : "";
     // $clickedBtn === "prev" ? carousel.prev() : "";
