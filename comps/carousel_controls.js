@@ -1,11 +1,5 @@
-// function findAncestor(el, cls) {
-//   console.log(el, cls);
-//   while ((el = el.parentElement) && !el.classList.contains(cls));
-//   return el;
-// }
-
-const template = document.createElement("template");
-template.innerHTML = `
+const template_controls = document.createElement("template");
+template_controls.innerHTML = `
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <style>
@@ -56,7 +50,7 @@ class Controls extends HTMLElement {
     super();
     this.root = this.attachShadow({ mode: "open" });
     // shadowRoot shields the web component from external styling, mostly
-    let clone = template.content.cloneNode(true);
+    let clone = template_controls.content.cloneNode(true);
     this.root.append(clone);
 
     // testo(this.offsetParent.closest(".carousel"));
@@ -77,20 +71,18 @@ class Controls extends HTMLElement {
 
   connectedCallback() {
     const $parent = this.offsetParent.id;
-    console.log("this.parent = = = = ", $parent);
     const $carousel = new bootstrap.Carousel(`#${$parent}`, {
       interval: 2000,
       touch: false,
       wrap: false,
     });
-    console.log("$carousel ---------- ", $carousel);
     $carousel.pause();
 
     const $btnNext = this.root.querySelector(".carousel-control-next");
     const $btnPrev = this.root.querySelector(".carousel-control-prev");
-    console.log($btnNext, $btnPrev);
-    $btnNext.setAttribute("data-bs-target", `#${$parent}`);
-    $btnPrev.setAttribute("data-bs-target", `#${$parent}`);
+
+    // $btnNext.setAttribute("data-bs-target", `#${$parent}`);
+    // $btnPrev.setAttribute("data-bs-target", `#${$parent}`);
 
     $btnNext.addEventListener("click", () => {
       $carousel.next();

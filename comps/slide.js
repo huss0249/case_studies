@@ -1,5 +1,5 @@
-const template = document.createElement("template");
-template.innerHTML = `
+const template_slide = document.createElement("template");
+template_slide.innerHTML = `
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <style>
@@ -73,7 +73,7 @@ class Slide extends HTMLElement {
     super();
     this.root = this.attachShadow({ mode: "open" });
     // shadowRoot shields the web component from external styling, mostly
-    let clone = template.content.cloneNode(true);
+    let clone = template_slide.content.cloneNode(true);
     this.root.append(clone);
   }
 
@@ -99,12 +99,12 @@ class Slide extends HTMLElement {
   }
 
   renderIntro() {
-    console.log("Rendering intro");
+    // console.log("Rendering intro");
     document.querySelectorAll("button").forEach((btn) => {
       btn.setAttribute("disabled", "disabled");
       btn.classList.add("d-none");
     });
-    console.log(document.querySelector(".carousel").id);
+    // console.log(document.querySelector(".carousel").id);
     const myTarget = document.querySelector(".carousel").id;
     const carousel = new bootstrap.Carousel(`#${myTarget}`);
     // carousel.cycle();
@@ -112,7 +112,7 @@ class Slide extends HTMLElement {
 
   connectedCallback() {
     // this.style.background = color;
-    console.log(this.parentElement.parentElement.parentElement.id, this.type);
+    // console.log(this.parentElement.parentElement.parentElement.id, this.type);
     // this.type === "intro" ? this.renderIntro() : "";
     // this.type === "intro" ? this.renderIntro() : "";
 
@@ -121,19 +121,19 @@ class Slide extends HTMLElement {
         this.renderIntro();
         break;
       case "mcq":
-        console.log("MC Q");
+        // console.log("MC Q");
         break;
       case "ynq":
-        console.log("YN Q");
+        // console.log("YN Q");
         break;
       case "tfq":
-        console.log("TF Q");
+        // console.log("TF Q");
         break;
       case "conc":
-        console.log("Conclusion");
+        // console.log("Conclusion");
         break;
       default:
-        console.log("SWITCH CASE");
+      // console.log("SWITCH CASE");
     }
   }
 
@@ -143,7 +143,7 @@ class Slide extends HTMLElement {
   attributeChangedCallback(attrName, oldVal, newVal) {
     if (attrName.toLowerCase() === "type") {
     }
-    console.log(attrName, newVal);
+    // console.log(attrName, newVal);
     if (attrName.toLowerCase() === "color") {
       // this.style.background = newVal;
       this.classList.add(`bg-${newVal}`);
