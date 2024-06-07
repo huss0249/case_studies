@@ -1,0 +1,57 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+body {
+    margin: 0;
+    /* display: flex; */
+}
+
+#app {
+    /* display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: 2rem; */
+    /* height: 600px; */
+    /* background: #ccc;
+    margin: 0; */
+    /* width: 100%; */
+    /* height: 500px !important; */
+    /* background: grey !important; */
+    margin: 10px 0;
+}
+
+/* .copyright {
+    background: red !important;
+    display: block;
+    height: 40px;
+} */
+
+.carousel {
+    /* height: 500px; */
+    /* background: purple; */
+}
+big-head {
+    background: red;
+}
+
+big-main {
+    margin-bottom: auto;
+    height: auto;
+    min-height: 600px;
+}
+
+big-foot {
+    justify-self: end;
+    margin-top: auto;
+    height: 100px;
+}
+
+/* .carousel-item {
+    width: 100%;
+    height: 480px;
+  }
+  .carousel-caption {
+    color: white !important;
+    display: block;
+    text-align: center !important;
+    border: solid thin white;
+  } */
