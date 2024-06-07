@@ -5,6 +5,7 @@ import "/comps/carousel_full.js";
 
 
 
+
 const $app = document.querySelector("#app");
 const $inc = document.createElement("div");
 const $full = document.createElement("div");

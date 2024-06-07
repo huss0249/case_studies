@@ -1,4 +1,4 @@
-window.$carousel = "";
+// window.$carousel = "";
 
 const template = document.createElement("template");
 template.innerHTML = `

@@ -25,9 +25,12 @@ template.innerHTML = `
 <div class="root carousel-item bg-info d-flex justify-content-center align-items-center">
 -->
 <div class="root">
-
+<!--
     <div class="card bg-warning p-5">
         <div class="card-body">
+-->
+          <slot name="slide"></slot>
+            <!--
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                 <label class="form-check-label" for="flexRadioDefault1">Radio</label>
@@ -37,9 +40,11 @@ template.innerHTML = `
                 <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
                 <label class="form-check-label" for="flexRadioDefault2">Radio</label>
             </div>
+            -->
+<!--
         </div>
     </div>
-
+-->
     </div>
     <!--
 <h1>SLIDE</h1>
@@ -73,17 +78,17 @@ class Slide extends HTMLElement {
   }
 
   //define the allowed attributes
-  /* static get observedAttributes() {
-    return ["character", "color"];
-  } */
+  static get observedAttributes() {
+    return ["type", "color"];
+  }
   //
   //sync attributes with properties as you want
-  /*
-  get character() {
-    return this.getAttribute("character");
+
+  get type() {
+    return this.getAttribute("type");
   }
-  set character(value) {
-    this.setAttribute("character", value);
+  set type(value) {
+    this.setAttribute("type", value);
   }
 
   get color() {
@@ -92,26 +97,58 @@ class Slide extends HTMLElement {
   set color(value) {
     this.setAttribute("color", value);
   }
-    */
+
+  renderIntro() {
+    console.log("Rendering intro");
+    document.querySelectorAll("button").forEach((btn) => {
+      btn.setAttribute("disabled", "disabled");
+      btn.classList.add("d-none");
+    });
+    console.log(document.querySelector(".carousel").id);
+    const myTarget = document.querySelector(".carousel").id;
+    const carousel = new bootstrap.Carousel(`#${myTarget}`);
+    carousel.cycle();
+  }
+
+  connectedCallback() {
+    // this.style.background = color;
+    console.log(this.parentElement.parentElement.parentElement.id, this.type);
+    // this.type === "intro" ? this.renderIntro() : "";
+    // this.type === "intro" ? this.renderIntro() : "";
+
+    switch (this.type) {
+      case "intro":
+        this.renderIntro();
+        break;
+      case "mcq":
+        console.log("MC Q");
+        break;
+      case "ynq":
+        console.log("YN Q");
+        break;
+      case "tfq":
+        console.log("TF Q");
+        break;
+      case "conc":
+        console.log("Conclusion");
+        break;
+      default:
+        console.log("SWITCH CASE");
+    }
+  }
+
   //
   //handle values and changes to the attributes
-  /*
+
   attributeChangedCallback(attrName, oldVal, newVal) {
-    if (attrName.toLowerCase() === "character") {
-      const div = this.root.querySelector(".root");
-      let p = div.querySelector("p")
-        ? div.querySelector("p")
-        : document.createElement("p");
-      p.className = "character";
-      p.textContent = newVal;
-      div.append(p);
+    if (attrName.toLowerCase() === "type") {
     }
     console.log(attrName, newVal);
     if (attrName.toLowerCase() === "color") {
-      this.style.backgroundColor = newVal;
+      // this.style.background = newVal;
+      this.classList.add(`bg-${newVal}`);
     }
   }
-  */
 }
 
 customElements.define("my-slide", Slide);

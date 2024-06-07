@@ -1,11 +1,44 @@
 <my-carousel-full id="carouselF" class="carousel slide">
-    <div slot="carousel">
-      <div class="carousel-inner">
-        <my-slide class="carousel-item bg-primary p-5 active"></my-slide>
-        <my-slide class="carousel-item bg-primary p-5"></my-slide>
-        <my-slide class="carousel-item bg-primary p-5"></my-slide>
+  <div slot="carousel">
+    <div class="carousel-inner">
+      <my-slide class="carousel-item active" color="secondary" type="intro">
+        <div slot="slide" class="text-center">
+      
+          <h1>INTRO</h1>
+        </div>
+      </my-slide>
+      
+      <my-slide class="carousel-item" color="secondary" type="mcq">
+        <div slot="slide" class="text-center">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">Radio</label>
+          </div>
+      
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+            <label class="form-check-label" for="flexRadioDefault2">Radio</label>
+          </div>
+        </div>
+      
+      </my-slide>
+      
+      <my-slide class="carousel-item" color="secondary" type="ynq">
+        <div slot="slide">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+            <label class="form-check-label" for="flexRadioDefault1">Radio</label>
+          </div>
+      
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+            <label class="form-check-label" for="flexRadioDefault2">Radio</label>
+          </div>
+        </div>
+      
+      </my-slide>
       </div>
-  
+      
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselF" data-bs-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
         <span class="visually-hidden">Previous</span>
@@ -15,5 +48,5 @@
         <span class="visually-hidden">Next</span>
       </button>
       <!-- <my-controls></my-controls> -->
-    </div>
-  </my-carousel-full>
+      </div>
+      </my-carousel-full>
