@@ -78,8 +78,13 @@ class Controls extends HTMLElement {
   connectedCallback() {
     const $parent = this.offsetParent.id;
     console.log("this.parent = = = = ", $parent);
-    const $carousel = new bootstrap.Carousel(`#${$parent}`);
+    const $carousel = new bootstrap.Carousel(`#${$parent}`, {
+      interval: 2000,
+      touch: false,
+      wrap: false,
+    });
     console.log("$carousel ---------- ", $carousel);
+    $carousel.pause();
 
     const $btnNext = this.root.querySelector(".carousel-control-next");
     const $btnPrev = this.root.querySelector(".carousel-control-prev");
