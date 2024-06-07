@@ -4,7 +4,9 @@ import "/comps/carousel.js";
 import "/comps/carousel_full.js";
 
 
-
+function test(flag) {
+    console.log("flag => ", flag)
+}
 
 const $app = document.querySelector("#app");
 const $inc = document.createElement("div");
