@@ -1,4 +1,8 @@
-// window.$carousel = "";
+// function findAncestor(el, cls) {
+//   console.log(el, cls);
+//   while ((el = el.parentElement) && !el.classList.contains(cls));
+//   return el;
+// }
 
 const template = document.createElement("template");
 template.innerHTML = `
@@ -54,27 +58,75 @@ class Controls extends HTMLElement {
     // shadowRoot shields the web component from external styling, mostly
     let clone = template.content.cloneNode(true);
     this.root.append(clone);
+
+    // testo(this.offsetParent.closest(".carousel"));
+    // testo(this.offsetParent);
+    // console.log(this.offsetParent);
+
+    /*
+    const $parent = this.offsetParent.id;
+    console.log("this.parent = = = = ", $parent);
+
+    const $btnNext = this.root.querySelector(".carousel-control-next");
+    const $btnPrev = this.root.querySelector(".carousel-control-prev");
+    console.log($btnNext, $btnPrev);
+    $btnNext.setAttribute("data-bs-target", `#${$parent}`);
+    $btnPrev.setAttribute("data-bs-target", `#${$parent}`);
+    */
   }
 
   connectedCallback() {
-    // const parentID = this.parentElement.parentElement.id;
-    const parentID = this.parentElement.id;
-    console.log("parentID ", parentID);
-    // $carousel = document.querySelector(`#${parentID}`);
-    console.log(document.querySelector(".carousel").id);
-    const myTarget = document.querySelector(".carousel").id;
-    const $carousel = new bootstrap.Carousel(`#${myTarget}`);
-    $carousel.cycle();
+    const $parent = this.offsetParent.id;
+    console.log("this.parent = = = = ", $parent);
+    const $carousel = new bootstrap.Carousel(`#${$parent}`);
+    console.log("$carousel ---------- ", $carousel);
 
-    const btns = this.root.querySelectorAll("button");
-    btns.forEach((b) => {
-      // b.setAttribute("data-bs-target", `#${this.control}`);
-      b.setAttribute("data-bs-target", `#${parentID}`);
-      b.addEventListener("click", this.whoClicked);
+    const $btnNext = this.root.querySelector(".carousel-control-next");
+    const $btnPrev = this.root.querySelector(".carousel-control-prev");
+    console.log($btnNext, $btnPrev);
+    $btnNext.setAttribute("data-bs-target", `#${$parent}`);
+    $btnPrev.setAttribute("data-bs-target", `#${$parent}`);
+
+    $btnNext.addEventListener("click", () => {
+      $carousel.next();
+    });
+    $btnPrev.addEventListener("click", () => {
+      $carousel.prev();
     });
 
-    // let myCarousel = $bbb;
-    console.log("carousel ", $carousel);
+    // const $btnNext = this.root.querySelector(".carousel-control-next");
+    // const $btnPrev = this.root.querySelector(".carousel-control-prev");
+    // console.log($btnNext, $btnPrev);
+    // $btnNext.addEventListener("click", this.clicked);
+    // $btnPrev.addEventListener("click", this.clicked);
+    // const parentID = this.parentElement.parentElement.id;
+    // const parentID = this.parentElement.id;
+    // console.log("parentID ", parentID);
+    // // $carousel = document.querySelector(`#${parentID}`);
+    // console.log(document.querySelector(".carousel").id);
+    // const myTarget = document.querySelector(".carousel").id;
+    // const $carousel = new bootstrap.Carousel(`#${myTarget}`);
+    // $carousel.cycle();
+    // const btns = this.root.querySelectorAll("button");
+    // btns.forEach((b) => {
+    //   // b.setAttribute("data-bs-target", `#${this.control}`);
+    //   b.setAttribute("data-bs-target", `#${parentID}`);
+    //   b.addEventListener("click", this.whoClicked);
+    // });
+    // // let myCarousel = $bbb;
+    // console.log("carousel ", $carousel);
+  }
+
+  // findAncestor(el, cls) {
+  //   while ((el = el.parentElement) && !el.classList.contains(cls));
+  //   return el;
+  // }
+
+  clicked(e) {
+    console.log("CLICKED > ", e.target.closest("button"));
+    let myBtn = e.target.closest("button");
+    // let $parentCarousel = window[test];
+    // console.log("$parentCarousel = ", $parentCarousel);
   }
 
   whoClicked(e) {
