@@ -107,7 +107,7 @@ class Slide extends HTMLElement {
     console.log(document.querySelector(".carousel").id);
     const myTarget = document.querySelector(".carousel").id;
     const carousel = new bootstrap.Carousel(`#${myTarget}`);
-    carousel.cycle();
+    // carousel.cycle();
   }
 
   connectedCallback() {

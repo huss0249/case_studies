@@ -61,7 +61,11 @@ class Controls extends HTMLElement {
   connectedCallback() {
     const parentID = this.parentElement.parentElement.id;
     console.log("parentID ", parentID);
-    $carousel = document.querySelector(`#${parentID}`);
+    // $carousel = document.querySelector(`#${parentID}`);
+    console.log(document.querySelector(".carousel").id);
+    const myTarget = document.querySelector(".carousel").id;
+    const $carousel = new bootstrap.Carousel(`#${myTarget}`);
+    $carousel.cycle();
 
     const btns = this.root.querySelectorAll("button");
     btns.forEach((b) => {
