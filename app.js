@@ -1,7 +1,7 @@
+import "/comps/carousel_controls.js";
 import "/comps/slide.js";
 import "/comps/carousel.js";
 import "/comps/carousel_full.js";
-import "/comps/carousel_controls.js";
 
 const $app = document.querySelector("#app");
 const $inc = document.createElement("div");
@@ -18,4 +18,3 @@ $full.setAttribute("include-HTML", "./incs/carousel_full.html");
 // $app.appendChild($inc);
 // console.log($app);
 // $app.innerHTML = '<div id="app" include-HTML="./incs/carousel.html"></div>';
-

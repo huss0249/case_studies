@@ -56,80 +56,11 @@ class Controls extends HTMLElement {
     this.root.append(clone);
   }
 
-  //define the allowed attributes
-  static get observedAttributes() {
-    return ["control", "color"];
-  }
-
-  //sync attributes with properties as you want
-  get control() {
-    return this.getAttribute("control");
-  }
-  set control(value) {
-    this.setAttribute("control", value);
-  }
-
-  get color() {
-    return this.getAttribute("color");
-  }
-  set color(value) {
-    this.setAttribute("color", value);
-  }
-
-  /*
-  handle values and changes to the attributes
-  */
-  attributeChangedCallback(attrName, oldVal, newVal) {
-    if (attrName.toLowerCase() === "control") {
-      const btns = this.root.querySelectorAll("button");
-      btns.forEach((b) => {
-        b.setAttribute("data-bs-target", `#${newVal}`);
-      });
-    }
-
-    if (attrName.toLowerCase() === "color") {
-      this.style.backgroundColor = newVal;
-    }
-  }
-
-  whoClicked(e) {
-    // console.log(
-    //   "whoClicked = ",
-    //   e.target.closest("button").getAttribute("data-bs-slide")
-    // );
-
-    let $clickedBtn = e.target.closest("button").getAttribute("data-bs-slide");
-    console.log("$clickedBtn = ", $clickedBtn);
-
-    new bootstrap.Carousel(myCarousel);
-
-    // new bootstrap.Carousel(myCarousel).cycle();
-    // new bootstrap.Carousel(myCarousel).next();
-    $clickedBtn === "next" ? new bootstrap.Carousel(myCarousel).next() : "";
-    $clickedBtn === "prev" ? new bootstrap.Carousel(myCarousel).prev() : "";
-
-    // console.log("whoClicked = ", e.target.getAttribute("data-bs-slide"));
-
-    // console.log("whoClicked = ", e.target.getAttribute("data-bs-slide"));
-  }
-
-  // clickedIt(e) {
-  //   console.log(e.target);
-
-  //   // Activate Carousel
-  //   new bootstrap.Carousel(myCarousel);
-
-  //   // new bootstrap.Carousel(myCarousel).cycle();
-  //   // new bootstrap.Carousel(myCarousel).next();
-  //   new bootstrap.Carousel(myCarousel).prev();
-
-  //   console.log("clicked");
-  // }
-
   connectedCallback() {
-    console.log("THIS ", this.parentElement.parentElement.id);
-    let parentID = this.parentElement.parentElement.id;
-    // if (this.control) {
+    const parentID = this.parentElement.parentElement.id;
+    console.log("parentID ", parentID);
+    this.root.carousel = document.querySelector(`#${parentID}`);
+
     const btns = this.root.querySelectorAll("button");
     btns.forEach((b) => {
       // b.setAttribute("data-bs-target", `#${this.control}`);
@@ -137,58 +68,28 @@ class Controls extends HTMLElement {
       b.addEventListener("click", this.whoClicked);
     });
 
-    // let $bbb = document.querySelector("#carouselb");
-    // let $bbb = document.querySelector(`#${this.control}`);
-    // let $bbb = document.querySelector(`#${parentID}`);
-    this.myCarousel = document.querySelector(`#${parentID}`);
-
     // let myCarousel = $bbb;
-    console.log("this.myCarousel ", this.myCarousel);
-
-    // this.root
-    //   .querySelector(".carousel-control-prev")
-    //   .addEventListener("click", clickedIt);
-
-    // console.log($check);
-    // console.log($bbb);
-    // }
-    // window.wcUID++;
-    // // console.log(this.cat)
-    // if (this.cat === "acc") {
-    //   this.makeAccordions(`ex${this.cat}`);
-    // } else if (this.cat === "tab") {
-    //   this.makeTabs(`ex${this.cat}`);
-    // } else if (this.cat === "pill") {
-    //   this.makePillTabs(`ex${this.cat}`);
-    // } else if (this.cat === "horizontal") {
-    //   this.makeHorizontalTabs(`ex${this.cat}`);
-    // }
-    // this.wc_title();
-    // this.wc_content();
-    // this.makeAccordion()
-
-    // return;
+    console.log("carousel ", this.root.carousel);
   }
 
-  //
-  //handle values and changes to the attributes
-  /*
-  attributeChangedCallback(attrName, oldVal, newVal) {
-    if (attrName.toLowerCase() === "control") {
-      const div = this.root.querySelector(".root");
-      let p = div.querySelector("p")
-        ? div.querySelector("p")
-        : document.createElement("p");
-      p.className = "control";
-      p.textContent = newVal;
-      div.append(p);
-    }
-    console.log(attrName, newVal);
-    if (attrName.toLowerCase() === "color") {
-      this.style.backgroundColor = newVal;
-    }
+  whoClicked(e) {
+    let $clickedBtn = e.target.closest("button").getAttribute("data-bs-slide");
+    console.log(
+      "$clickedBtn = ",
+      $clickedBtn,
+      " | ",
+      this.parentElement.parentElement.id
+    );
+    // const $pp = e.target.parentElement.parentElement.parentElement;
+
+    // $clickedBtn === "next" ? carousel.next() : "";
+    // $clickedBtn === "prev" ? carousel.prev() : "";
+    $clickedBtn === "next" ? this.root.carousel.next() : "";
+    $clickedBtn === "prev" ? this.root.carousel.prev() : "";
+    // $clickedBtn === "next" ? $pp.next() : "";
+    // $clickedBtn === "prev" ? $pp.prev() : "";
+    this.carousel.next();
   }
-  */
 }
 
 customElements.define("my-controls", Controls);
