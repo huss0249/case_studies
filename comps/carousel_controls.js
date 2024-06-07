@@ -106,29 +106,29 @@ class Controls extends HTMLElement {
     // new bootstrap.Carousel(myCarousel).cycle();
     // new bootstrap.Carousel(myCarousel).next();
     $clickedBtn === "next" ? new bootstrap.Carousel(myCarousel).next() : "";
-    $clickedBtn === "next" ? new bootstrap.Carousel(myCarousel).prev() : "";
+    $clickedBtn === "prev" ? new bootstrap.Carousel(myCarousel).prev() : "";
 
     // console.log("whoClicked = ", e.target.getAttribute("data-bs-slide"));
 
     // console.log("whoClicked = ", e.target.getAttribute("data-bs-slide"));
   }
 
-  clickedIt(e) {
-    console.log(e.target);
+  // clickedIt(e) {
+  //   console.log(e.target);
 
-    // Activate Carousel
-    new bootstrap.Carousel(myCarousel);
+  //   // Activate Carousel
+  //   new bootstrap.Carousel(myCarousel);
 
-    // new bootstrap.Carousel(myCarousel).cycle();
-    // new bootstrap.Carousel(myCarousel).next();
-    new bootstrap.Carousel(myCarousel).prev();
+  //   // new bootstrap.Carousel(myCarousel).cycle();
+  //   // new bootstrap.Carousel(myCarousel).next();
+  //   new bootstrap.Carousel(myCarousel).prev();
 
-    console.log("clicked");
-  }
+  //   console.log("clicked");
+  // }
 
   connectedCallback() {
     console.log("THIS ", this.parentElement.parentElement.id);
-    const parentID = this.parentElement.parentElement.id;
+    let parentID = this.parentElement.parentElement.id;
     // if (this.control) {
     const btns = this.root.querySelectorAll("button");
     btns.forEach((b) => {
@@ -139,17 +139,18 @@ class Controls extends HTMLElement {
 
     // let $bbb = document.querySelector("#carouselb");
     // let $bbb = document.querySelector(`#${this.control}`);
-    let $bbb = document.querySelector(`#${parentID}`);
+    // let $bbb = document.querySelector(`#${parentID}`);
+    this.myCarousel = document.querySelector(`#${parentID}`);
 
-    let myCarousel = $bbb;
-    console.log("myCarousel ", myCarousel);
+    // let myCarousel = $bbb;
+    console.log("this.myCarousel ", this.myCarousel);
 
-    this.root
-      .querySelector(".carousel-control-prev")
-      .addEventListener("click", clickedIt);
+    // this.root
+    //   .querySelector(".carousel-control-prev")
+    //   .addEventListener("click", clickedIt);
 
     // console.log($check);
-    console.log($bbb);
+    // console.log($bbb);
     // }
     // window.wcUID++;
     // // console.log(this.cat)
