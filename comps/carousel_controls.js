@@ -83,10 +83,14 @@ class Controls extends HTMLElement {
     console.log("$clickedBtn = ", $clickedBtn, " | ");
     // const $pp = e.target.parentElement.parentElement.parentElement;
 
+
+    const myTarget = document.querySelector(".carousel").id;
+    const $carousel = new bootstrap.Carousel(`#${myTarget}`);
+
     // $clickedBtn === "next" ? carousel.next() : "";
     // $clickedBtn === "prev" ? carousel.prev() : "";
-    $clickedBtn === "next" ? window.$carousel.next() : "";
-    $clickedBtn === "prev" ? window.$carousel.prev() : "";
+    $clickedBtn === "next" ? $carousel.next() : "";
+    $clickedBtn === "prev" ? $carousel.prev() : "";
     // $clickedBtn === "next" ? $pp.next() : "";
     // $clickedBtn === "prev" ? $pp.prev() : "";
     // $carousel.next();
