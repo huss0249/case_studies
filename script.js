@@ -27,6 +27,12 @@ function advanceCarousel(flag) {
 }
 
 function advanceCarouselfromSlide(e) {
+  console.log(
+    e.target.offsetParent.parentElement.offsetParent.parentElement.offsetParent
+  );
+
+  let yyy = findAncestor(e.target, "carousel");
+  console.log("YYYYYY ", yyy);
   // !flag ? (flag = $carousel) : "";
   // console.log("$carousel = ", $carousel);
   // console.log("advanceCarouselfromSlide => ", e.target);
@@ -34,7 +40,8 @@ function advanceCarouselfromSlide(e) {
   // document.querySelectorAll(".carousel")[0].next();
   console.log(document.querySelectorAll(".carousel")[0]);
   // wwww.cycle();
-  $carousel = new bootstrap.Carousel(document.querySelector("#carousel01"));
+  // $carousel = new bootstrap.Carousel(document.querySelector("#carousel01"));
+  $carousel = new bootstrap.Carousel(yyy);
   console.log($carousel);
 
   $carousel.next();
