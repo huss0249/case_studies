@@ -106,7 +106,8 @@ class Slide extends HTMLElement {
     let $startBtn = document.querySelector(".btn-start");
     console.log("start btn ", $startBtn);
     // $startBtn.addEventListener("click", advanceCarouselfromSlide);
-    $startBtn.addEventListener("click", this.callroot);
+    // $startBtn.addEventListener("click", this.callroot);
+    $startBtn.addEventListener("click", advanceCarouselfromSlide);
 
     // console.log("Rendering intro");
     // document.querySelectorAll("button").forEach((btn) => {

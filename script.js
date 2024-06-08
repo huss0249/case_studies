@@ -32,9 +32,12 @@ function advanceCarouselfromSlide(e) {
   // console.log("advanceCarouselfromSlide => ", e.target);
   // let wwww = new bootstrap.Carousel(flag);
   // document.querySelectorAll(".carousel")[0].next();
-  console.log($carousel);
   console.log(document.querySelectorAll(".carousel")[0]);
   // wwww.cycle();
-  // $carousel.next();
+  $carousel = new bootstrap.Carousel(document.querySelector("#carousel01"));
+  console.log($carousel);
+
+  $carousel.next();
+
   // e.target.classList.contains("btn-start") ? $carousel.next() : "";
 }
