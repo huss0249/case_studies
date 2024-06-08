@@ -26,10 +26,15 @@ function advanceCarousel(flag) {
   flag.cycle();
 }
 
-function advanceCarouselfromSlide(flag) {
+function advanceCarouselfromSlide(e) {
   // !flag ? (flag = $carousel) : "";
   // console.log("$carousel = ", $carousel);
-  console.log(flag);
-  flag.next();
+  // console.log("advanceCarouselfromSlide => ", e.target);
+  // let wwww = new bootstrap.Carousel(flag);
+  // document.querySelectorAll(".carousel")[0].next();
+  console.log($carousel);
+  console.log(document.querySelectorAll(".carousel")[0]);
+  // wwww.cycle();
   // $carousel.next();
+  // e.target.classList.contains("btn-start") ? $carousel.next() : "";
 }

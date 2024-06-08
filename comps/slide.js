@@ -98,9 +98,16 @@ class Slide extends HTMLElement {
     this.setAttribute("color", value);
   }
 
+  callroot() {
+    advanceCarouselfromSlide();
+  }
+
   renderIntro() {
     let $startBtn = document.querySelector(".btn-start");
-    $startBtn.addEventListener("click", advanceCarouselfromSlide.bind(this));
+    console.log("start btn ", $startBtn);
+    // $startBtn.addEventListener("click", advanceCarouselfromSlide);
+    $startBtn.addEventListener("click", this.callroot);
+
     // console.log("Rendering intro");
     // document.querySelectorAll("button").forEach((btn) => {
     //   btn.setAttribute("disabled", "disabled");
