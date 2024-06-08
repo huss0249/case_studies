@@ -27,6 +27,9 @@ function advanceCarousel(flag) {
 }
 
 function advanceCarouselfromSlide(flag) {
+  // !flag ? (flag = $carousel) : "";
+  // console.log("$carousel = ", $carousel);
   console.log(flag);
   flag.next();
+  // $carousel.next();
 }

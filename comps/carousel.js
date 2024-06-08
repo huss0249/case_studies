@@ -6,7 +6,7 @@ template_carousel.innerHTML = `
 <style>
     :host{
         /* the shadow root */
-        background-color: #333; /* default */
+        /*background-color: #333;*/ /* default */
         color: white;
         display: block; /* critical */
         /*
@@ -26,7 +26,7 @@ template_carousel.innerHTML = `
 <!--    ==============  -->
 <!--    ==============  -->
 <!--    ==============  -->
-<div class="root">
+<div class="root container-fluid bg-transparent p-0">
     <slot name="carousel">Default text if not title slot used in HTML</slot>
 </div>
 `;

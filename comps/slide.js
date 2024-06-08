@@ -24,7 +24,7 @@ template_slide.innerHTML = `
 
 <div class="root carousel-item bg-info d-flex justify-content-center align-items-center">
 -->
-<div class="root">
+<div class="root container">
 <!--
     <div class="card bg-warning p-5">
         <div class="card-body">
@@ -99,6 +99,8 @@ class Slide extends HTMLElement {
   }
 
   renderIntro() {
+    let $startBtn = document.querySelector(".btn-start");
+    $startBtn.addEventListener("click", advanceCarouselfromSlide.bind(this));
     // console.log("Rendering intro");
     // document.querySelectorAll("button").forEach((btn) => {
     //   btn.setAttribute("disabled", "disabled");
@@ -109,7 +111,7 @@ class Slide extends HTMLElement {
     // const myTarget = document.querySelector(".carousel").id;
     // const carousel = new bootstrap.Carousel(`#${myTarget}`);
     // carousel.cycle();
-    advanceCarouselfromSlide($carousel);
+    // advanceCarouselfromSlide($carousel);
   }
 
   connectedCallback() {
