@@ -100,14 +100,16 @@ class Slide extends HTMLElement {
 
   renderIntro() {
     // console.log("Rendering intro");
-    document.querySelectorAll("button").forEach((btn) => {
-      btn.setAttribute("disabled", "disabled");
-      btn.classList.add("d-none");
-    });
+    // document.querySelectorAll("button").forEach((btn) => {
+    //   btn.setAttribute("disabled", "disabled");
+    //   btn.classList.add("d-none");
+    // });
+    // hideCarouselPrevBtn();
     // console.log(document.querySelector(".carousel").id);
-    const myTarget = document.querySelector(".carousel").id;
-    const carousel = new bootstrap.Carousel(`#${myTarget}`);
+    // const myTarget = document.querySelector(".carousel").id;
+    // const carousel = new bootstrap.Carousel(`#${myTarget}`);
     // carousel.cycle();
+    advanceCarouselfromSlide($carousel);
   }
 
   connectedCallback() {

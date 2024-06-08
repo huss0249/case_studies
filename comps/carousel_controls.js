@@ -75,6 +75,7 @@ class Controls extends HTMLElement {
       interval: 2000,
       touch: false,
       wrap: false,
+      keyboard: true,
     });
     $carousel.pause();
 

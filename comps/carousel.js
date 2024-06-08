@@ -38,6 +38,25 @@ class Carousel extends HTMLElement {
     // shadowRoot shields the web component from external styling, mostly
     let clone = template_carousel.content.cloneNode(true);
     this.root.append(clone);
+
+    const $parent = this.id;
+    console.log($parent);
+    // const $carousel = new bootstrap.Carousel(`#${$parent}`, {
+    $carousel = new bootstrap.Carousel(`#${$parent}`, {
+      interval: 3000,
+      touch: false,
+      wrap: false,
+      keyboard: true,
+    });
+    // $carousel.nextWhenVisible();
+    // $carousel.cycle();
+    $carousel.pause();
+    // console.log($carousel.from(2));
+    // $carousel.from(2);
+    // $carousel.to(3);
+
+    console.log($carousel);
+    // advanceCarousel($carousel);
   }
 
   //define the allowed attributes
