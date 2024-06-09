@@ -26,6 +26,6 @@ $inc.setAttribute("include-HTML", "./incs/carousel_03.html");
 // $app.innerHTML = '<div id="app" include-HTML="./incs/carousel.html"></div>';
 
 
-document
-  .querySelector("#ttst")
-  .addEventListener("click", advanceCarouselfromSlide);
+// document
+//   .querySelector("#ttst")
+//   .addEventListener("click", advanceCarouselfromSlide);

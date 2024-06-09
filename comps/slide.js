@@ -122,6 +122,18 @@ class Slide extends HTMLElement {
     // advanceCarouselfromSlide($carousel);
   }
 
+  renderSubmit() {
+    let $submitBtn = document.querySelector(".btn-submit");
+    console.log("$submitBtn ", $submitBtn);
+
+    $submitBtn.addEventListener("click", advanceCarouselfromSlide);
+
+    let $backBtn = document.querySelector(".btn-back");
+    console.log("$backBtn ", $backBtn);
+
+    $backBtn.addEventListener("click", advanceCarouselfromSlide);
+  }
+
   connectedCallback() {
     // this.style.background = color;
     // console.log(this.parentElement.parentElement.parentElement.id, this.type);
@@ -133,6 +145,7 @@ class Slide extends HTMLElement {
         this.renderIntro();
         break;
       case "mcq":
+        this.renderSubmit();
         // console.log("MC Q");
         break;
       case "ynq":

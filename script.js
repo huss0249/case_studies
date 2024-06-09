@@ -27,24 +27,22 @@ function advanceCarousel(flag) {
 }
 
 function advanceCarouselfromSlide(e) {
+  let $myTarget = e.target;
   console.log(
     e.target.offsetParent.parentElement.offsetParent.parentElement.offsetParent
   );
 
-  let yyy = findAncestor(e.target, "carousel");
+  console.log("my clicked target is ", $myTarget);
+  let yyy = findAncestor($myTarget, "carousel");
   console.log("YYYYYY ", yyy);
-  // !flag ? (flag = $carousel) : "";
-  // console.log("$carousel = ", $carousel);
-  // console.log("advanceCarouselfromSlide => ", e.target);
-  // let wwww = new bootstrap.Carousel(flag);
-  // document.querySelectorAll(".carousel")[0].next();
+
   console.log(document.querySelectorAll(".carousel")[0]);
-  // wwww.cycle();
-  // $carousel = new bootstrap.Carousel(document.querySelector("#carousel01"));
+
   $carousel = new bootstrap.Carousel(yyy);
   console.log($carousel);
 
-  $carousel.next();
-
-  // e.target.classList.contains("btn-start") ? $carousel.next() : "";
+  // $carousel.next();
+  $myTarget.classList.contains("btn-start") ? $carousel.next() : "";
+  $myTarget.classList.contains("btn-submit") ? $carousel.next() : "";
+  $myTarget.classList.contains("btn-back") ? $carousel.prev() : "";
 }
