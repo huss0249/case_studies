@@ -104,7 +104,7 @@ class Slide extends HTMLElement {
 
   renderIntro() {
     let $startBtn = document.querySelector(".btn-start");
-    console.log("start btn ", $startBtn);
+    // console.log("start btn ", $startBtn);
     // $startBtn.addEventListener("click", advanceCarouselfromSlide);
     // $startBtn.addEventListener("click", this.callroot);
     $startBtn.addEventListener("click", advanceCarouselfromSlide);
@@ -124,12 +124,12 @@ class Slide extends HTMLElement {
 
   renderSubmit() {
     let $submitBtn = document.querySelector(".btn-submit");
-    console.log("$submitBtn ", $submitBtn);
+    // console.log("$submitBtn ", $submitBtn);
 
     $submitBtn.addEventListener("click", advanceCarouselfromSlide);
 
     let $backBtn = document.querySelector(".btn-back");
-    console.log("$backBtn ", $backBtn);
+    // console.log("$backBtn ", $backBtn);
 
     $backBtn.addEventListener("click", advanceCarouselfromSlide);
   }

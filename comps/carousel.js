@@ -40,7 +40,7 @@ class Carousel extends HTMLElement {
     this.root.append(clone);
 
     const $parent = this.id;
-    console.log($parent);
+    // console.log($parent);
     // const $carousel = new bootstrap.Carousel(`#${$parent}`, {
     $carousel = new bootstrap.Carousel(`#${$parent}`, {
       interval: 3000,
@@ -55,7 +55,7 @@ class Carousel extends HTMLElement {
     // $carousel.from(2);
     // $carousel.to(3);
 
-    console.log($carousel);
+    // console.log($carousel);
     // advanceCarousel($carousel);
   }
 
