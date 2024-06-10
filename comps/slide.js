@@ -23,7 +23,7 @@ template_slide.innerHTML = `
 class Slide extends HTMLElement {
   constructor() {
     super();
-    this.root = this.attachShadow({ mode: "open" });
+    this.root = this.attachShadow({ mode: "closed" });
     // shadowRoot shields the web component from external styling, mostly
     let clone = template_slide.content.cloneNode(true);
     this.root.append(clone);
@@ -51,12 +51,15 @@ class Slide extends HTMLElement {
   }
 
   configControls() {
-    console.log("configControls");
-    let $startBtn = document.querySelector(".btn-start");
-    let $nextBtn = document.querySelector(".btn-next");
-    let $backBtn = document.querySelector(".btn-back");
-    let $submitBtn = document.querySelector(".btn-submit");
-    let $exitBtn = document.querySelector(".btn-exit");
+    let $startBtn, $nextBtn, $backBtn, $submitBtn, $exitBtn;
+
+    $startBtn = document.querySelector(".btn-start");
+    $nextBtn = document.querySelector(".btn-next");
+    $backBtn = document.querySelector(".btn-back");
+    $submitBtn = document.querySelector(".btn-submit");
+    $exitBtn = document.querySelector(".btn-exit");
+
+    console.log($startBtn, $nextBtn, $backBtn, $submitBtn, $exitBtn);
 
     $startBtn
       ? $startBtn.addEventListener("click", advanceCarouselfromSlide)
@@ -65,6 +68,7 @@ class Slide extends HTMLElement {
     $nextBtn
       ? $nextBtn.addEventListener("click", advanceCarouselfromSlide)
       : "";
+
     $backBtn
       ? $backBtn.addEventListener("click", advanceCarouselfromSlide)
       : "";
@@ -72,14 +76,17 @@ class Slide extends HTMLElement {
     $submitBtn
       ? $submitBtn.addEventListener("click", advanceCarouselfromSlide)
       : "";
+
     $exitBtn
       ? $exitBtn.addEventListener("click", advanceCarouselfromSlide)
       : "";
+
+    console.log("configControls");
   }
 
-  callroot() {
-    advanceCarouselfromSlide();
-  }
+  // callroot() {
+  //   advanceCarouselfromSlide();
+  // }
 
   renderIntro() {
     // let $startBtn = document.querySelector(".btn-start");
@@ -95,26 +102,27 @@ class Slide extends HTMLElement {
 
   connectedCallback() {
     this.configControls();
-    switch (this.type) {
-      case "intro":
-        this.renderIntro();
-        break;
-      case "mcq":
-        this.renderSubmit();
-        // console.log("MC Q");
-        break;
-      case "ynq":
-        // console.log("YN Q");
-        break;
-      case "tfq":
-        // console.log("TF Q");
-        break;
-      case "conc":
-        // console.log("Conclusion");
-        break;
-      default:
-      // console.log("SWITCH CASE");
-    }
+
+    // switch (this.type) {
+    //   case "intro":
+    //     this.renderIntro();
+    //     break;
+    //   case "mcq":
+    //     this.renderSubmit();
+    //     // console.log("MC Q");
+    //     break;
+    //   case "ynq":
+    //     // console.log("YN Q");
+    //     break;
+    //   case "tfq":
+    //     // console.log("TF Q");
+    //     break;
+    //   case "conc":
+    //     // console.log("Conclusion");
+    //     break;
+    //   default:
+    //   // console.log("SWITCH CASE");
+    // }
   }
 
   //

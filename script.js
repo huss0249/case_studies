@@ -28,13 +28,15 @@ function advanceCarousel(flag) {
 
 function advanceCarouselfromSlide(e) {
   let $myTarget = e.target;
+
+  // console.log($myTarget.classList);
   // console.log(
   //   e.target.offsetParent.parentElement.offsetParent.parentElement.offsetParent
   // );
 
   // console.log("my clicked target is ", $myTarget);
   let yyy = findAncestor($myTarget, "carousel");
-  console.log("YYYYYY ", yyy);
+  // console.log("YYYYYY ", yyy);
 
   // console.log(document.querySelectorAll(".carousel")[0]);
 
@@ -47,4 +49,5 @@ function advanceCarouselfromSlide(e) {
   $myTarget.classList.contains("btn-back") ? $carousel.prev() : "";
   $myTarget.classList.contains("btn-submit") ? $carousel.next() : "";
   $myTarget.classList.contains("btn-exit") ? $carousel.cycle() : "";
+  console.log("ENded ex fn");
 }
