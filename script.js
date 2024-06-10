@@ -34,7 +34,7 @@ function advanceCarouselfromSlide(e) {
 
   // console.log("my clicked target is ", $myTarget);
   let yyy = findAncestor($myTarget, "carousel");
-  // console.log("YYYYYY ", yyy);
+  console.log("YYYYYY ", yyy);
 
   // console.log(document.querySelectorAll(".carousel")[0]);
 
@@ -43,6 +43,8 @@ function advanceCarouselfromSlide(e) {
 
   // $carousel.next();
   $myTarget.classList.contains("btn-start") ? $carousel.next() : "";
-  $myTarget.classList.contains("btn-submit") ? $carousel.next() : "";
+  $myTarget.classList.contains("btn-next") ? $carousel.next() : "";
   $myTarget.classList.contains("btn-back") ? $carousel.prev() : "";
+  $myTarget.classList.contains("btn-submit") ? $carousel.next() : "";
+  $myTarget.classList.contains("btn-exit") ? $carousel.cycle() : "";
 }

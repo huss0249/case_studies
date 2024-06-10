@@ -10,62 +10,14 @@ template_slide.innerHTML = `
         display: block; /* critical */
         height: 300px;
     }
-    .root{
-        /*
-        position: relative;
-        padding: 2rem;
-        */
-    }
+    .root{}
 </style>
 <!--    ==============  -->
 <!--    ==============  -->
 <!--    ==============  -->
-<!--
-
-<div class="root carousel-item bg-info d-flex justify-content-center align-items-center">
--->
 <div class="root container">
-<!--
-    <div class="card bg-warning p-5">
-        <div class="card-body">
--->
-          <slot name="slide"></slot>
-            <!--
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                <label class="form-check-label" for="flexRadioDefault1">Radio</label>
-            </div>
-
-            <div class="form-check">
-                <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                <label class="form-check-label" for="flexRadioDefault2">Radio</label>
-            </div>
-            -->
-<!--
-        </div>
-    </div>
--->
-    </div>
-    <!--
-<h1>SLIDE</h1>
-    <div class="carousel-item bg-info d-flex justify-content-center align-items-center">
-        <div class="card">
-            <div class="card-body">
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-                    <label class="form-check-label" for="flexRadioDefault1">Radio</label>
-                </div>
-
-                <div class="form-check">
-                    <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
-                    <label class="form-check-label" for="flexRadioDefault2">Radio</label>
-                </div>
-            </div>
-        </div>
-
-    </div>
-    </div>
-    -->
+  <slot name="slide"></slot>
+</div>
 `;
 
 class Slide extends HTMLElement {
@@ -98,48 +50,51 @@ class Slide extends HTMLElement {
     this.setAttribute("color", value);
   }
 
+  configControls() {
+    console.log("configControls");
+    let $startBtn = document.querySelector(".btn-start");
+    let $nextBtn = document.querySelector(".btn-next");
+    let $backBtn = document.querySelector(".btn-back");
+    let $submitBtn = document.querySelector(".btn-submit");
+    let $exitBtn = document.querySelector(".btn-exit");
+
+    $startBtn
+      ? $startBtn.addEventListener("click", advanceCarouselfromSlide)
+      : "";
+
+    $nextBtn
+      ? $nextBtn.addEventListener("click", advanceCarouselfromSlide)
+      : "";
+    $backBtn
+      ? $backBtn.addEventListener("click", advanceCarouselfromSlide)
+      : "";
+
+    $submitBtn
+      ? $submitBtn.addEventListener("click", advanceCarouselfromSlide)
+      : "";
+    $exitBtn
+      ? $exitBtn.addEventListener("click", advanceCarouselfromSlide)
+      : "";
+  }
+
   callroot() {
     advanceCarouselfromSlide();
   }
 
   renderIntro() {
-    let $startBtn = document.querySelector(".btn-start");
-    // console.log("start btn ", $startBtn);
+    // let $startBtn = document.querySelector(".btn-start");
     // $startBtn.addEventListener("click", advanceCarouselfromSlide);
-    // $startBtn.addEventListener("click", this.callroot);
-    $startBtn.addEventListener("click", advanceCarouselfromSlide);
-
-    // console.log("Rendering intro");
-    // document.querySelectorAll("button").forEach((btn) => {
-    //   btn.setAttribute("disabled", "disabled");
-    //   btn.classList.add("d-none");
-    // });
-    // hideCarouselPrevBtn();
-    // console.log(document.querySelector(".carousel").id);
-    // const myTarget = document.querySelector(".carousel").id;
-    // const carousel = new bootstrap.Carousel(`#${myTarget}`);
-    // carousel.cycle();
-    // advanceCarouselfromSlide($carousel);
   }
 
   renderSubmit() {
-    let $submitBtn = document.querySelector(".btn-submit");
-    // console.log("$submitBtn ", $submitBtn);
-
-    $submitBtn.addEventListener("click", advanceCarouselfromSlide);
-
-    let $backBtn = document.querySelector(".btn-back");
-    // console.log("$backBtn ", $backBtn);
-
-    $backBtn.addEventListener("click", advanceCarouselfromSlide);
+    // let $submitBtn = document.querySelector(".btn-submit");
+    // $submitBtn.addEventListener("click", advanceCarouselfromSlide);
+    // let $backBtn = document.querySelector(".btn-back");
+    // $backBtn.addEventListener("click", advanceCarouselfromSlide);
   }
 
   connectedCallback() {
-    // this.style.background = color;
-    // console.log(this.parentElement.parentElement.parentElement.id, this.type);
-    // this.type === "intro" ? this.renderIntro() : "";
-    // this.type === "intro" ? this.renderIntro() : "";
-
+    this.configControls();
     switch (this.type) {
       case "intro":
         this.renderIntro();
